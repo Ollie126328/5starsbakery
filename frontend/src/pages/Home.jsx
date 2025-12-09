@@ -6,9 +6,11 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8080";
+
     // 2. Fetch from Java Backend
     useEffect(() => {
-        fetch("http://localhost:8080/api/products")
+        fetch(`${apiBaseUrl}/api/products`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to connect to Backend");
